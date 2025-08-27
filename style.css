@@ -1,3 +1,4 @@
+/* Estilos gerais para todas as telas */
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #74b9ff, #007bff);
@@ -7,12 +8,12 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 1rem;
+    margin: 0;
 }
 
 .container {
     max-width: 600px;
-    width: 100%;
-    margin: 40px auto;
+    width: 90%; /* Usa 90% da largura da tela */
     padding: 30px;
     background-color: #fff;
     border-radius: 15px;
@@ -22,14 +23,23 @@ body {
 
 .container h1 {
     color: #007bff;
+    font-size: 2.5rem; /* Usa unidade relativa para o tamanho da fonte */
+}
+
+/* Estilo do contêiner de entrada (input e botão) */
+.adicionarTarefa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Adiciona um espaço entre o input e o botão */
 }
 
 input[type="text"] {
-    flex-grow: 1; /* Faz o input ocupar o espaço restante */
+    flex-grow: 1;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
@@ -46,7 +56,7 @@ input[type="text"]:focus {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
     transition: background-color 0.3s ease;
 }
 
@@ -54,6 +64,7 @@ input[type="text"]:focus {
     background-color: #0056b3;
 }
 
+/* Estilo da lista de tarefas e itens */
 ul {
     list-style: none;
     padding: 0;
@@ -91,10 +102,41 @@ li {
     color: #ff4757;
 }
 
-.adicionarTarefa{
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+/*-----------------------------------*/
+/* Media Queries para responsividade */
+/*-----------------------------------*/
+
+/* Ajustes para telas de celulares (largura máxima de 480px) */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .adicionarTarefa {
+        flex-direction: column; /* Empilha o input e o botão */
+    }
+    
+    input[type="text"] {
+        margin-bottom: 10px; /* Adiciona espaço entre o input e o botão */
+        width: 100%; /* Garante que o input ocupe a largura total */
+    }
+
+    .botaoAdicionar {
+        width: 100%; /* Garante que o botão ocupe a largura total */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .adicionarTarefa {
+        flex-direction: column; /* Empilha o input e o botão */
+        gap: 15px;
+    }
+
+    input[type="text"] {
+        width: 100%; /* Garante que o input ocupe a largura total */
+    }
+
+    .botaoAdicionar {
+        width: 100%; /* Garante que o botão ocupe a largura total */
+    }
 }
