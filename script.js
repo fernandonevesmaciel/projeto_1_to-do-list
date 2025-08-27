@@ -4,7 +4,7 @@ const listaTarefas = document.querySelector(".listaTarefas");
 
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 
-botaoAdicionar.addEventListener("click", function() {
+botaoAdicionar.addEventListener("click", function () {
     const novaTarefa = {
         texto: inputTarefa.value,
         concluida: false
@@ -12,23 +12,27 @@ botaoAdicionar.addEventListener("click", function() {
 
     tarefas.push(novaTarefa);
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
-    
+
     mostrarTarefaNaTela(novaTarefa);
-    inputTarefa.value = ''; 
+    inputTarefa.value = '';
 });
 
 window.onload = function () {
-    // A variável tarefas já foi carregada pela linha "let tarefas = ..."
-    // Portanto, você pode usar ela diretamente
- if (tarefas) { 
-    tarefas.forEach(tarefa => {
-        mostrarTarefaNaTela(tarefa);
-        if (tarefa.concluida) {
-            // Se a tarefa já está concluída no localStorage, adicione a classe
-            // Você vai precisar de uma forma de referenciar o novoItem aqui
-        }
-    });
-}
+    if (tarefas) {
+        tarefas.forEach(tarefa => {
+            // 1. Mostra a tarefa na tela
+            mostrarTarefaNaTela(tarefa);
+
+            // 2. Encontra o último <li> que foi adicionado na lista
+            const ultimoItemDaLista = listaTarefas.lastElementChild;
+
+            // 3. Verifica se a tarefa está concluída
+            if (tarefa.concluida) {
+                // Se estiver, adiciona a classe CSS
+                ultimoItemDaLista.classList.add("tarefa-concluida");
+            }
+        });
+    }
 };
 
 
@@ -36,9 +40,9 @@ window.onload = function () {
 function mostrarTarefaNaTela(tarefa) {
     const novoItem = document.createElement("li");
     novoItem.innerHTML = tarefa.texto; // Ajustamos aqui para usar o objeto
-    
+
     // Adiciona o "ouvinte" de clique para marcar como concluída
-    novoItem.addEventListener("click", function() {
+    novoItem.addEventListener("click", function () {
         novoItem.classList.toggle("tarefa-concluida"); // Adiciona ou remove a classe
 
         // Atualiza o status de concluído no nosso array
@@ -50,7 +54,7 @@ function mostrarTarefaNaTela(tarefa) {
     const botaoExcluir = document.createElement("button");
     botaoExcluir.innerHTML = "X";
     botaoExcluir.classList.add("botao-excluir");
-    
+
     // Adiciona o "ouvinte" de clique ao botão
     botaoExcluir.addEventListener("click", function () {
         // Encontra a posição da tarefa no nosso array "tarefas"
