@@ -1,42 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Tarefas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Lista de tarefas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-
-    <div class="container">
-        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Minha Lista de Tarefas</h1>
-
-        <div class="mb-6 flex space-x-2">
-            <input type="text" id="taskInput" placeholder="Adicionar nova tarefa..."
-                class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button id="addTaskBtn"
-                class="bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">Adicionar</button>
+<body>
+    <section class="container">
+        <div>
+            <h1>Lista de tarefas</h1>
         </div>
-
-        <div class="mb-6 flex justify-center space-x-2">
-            <button id="allFilter"
-                class="px-4 py-2 rounded-lg text-sm font-medium bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-200">Todas</button>
-            <button id="activeFilter"
-                class="px-4 py-2 rounded-lg text-sm font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors duration-200">Pendentes</button>
-            <button id="completedFilter"
-                class="px-4 py-2 rounded-lg text-sm font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors duration-200">Concluídas</button>
+        <div class="adicionarTarefa">
+            <input type="text" name="tarefa" placeholder="Digite uma tarefa" id="tarefa">
+            <button class="botaoAdicionar">Adicionar</button>
         </div>
+        <div>
+            <h3>
+                Tarefas
+            </h3>
+            <p>Clique em cima da tafera para marcar como concluida</p>
+        </div>
+        <div class="listaTarefas">
+            <ul>
 
-        <ul id="taskList" class="space-y-2">
-            <!-- As tarefas serão inseridas aqui via JavaScript -->
-        </ul>
-    </div>
-
-
+            </ul>
+        </div>
+    </section>
     <script src="script.js"></script>
 </body>
+
 </html>
